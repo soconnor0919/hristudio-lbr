@@ -164,9 +164,27 @@ For the robot control layer, we plan to utilize ROS as the communication and con
 
 A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes using Figma for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
 
+The project dashboard mockups (see Figure \ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
+
+\begin{figure}[ht]
+  \begin{center}
+  	\includegraphics[width=0.4\paperwidth]{assets/mockups/projectdashboard}
+    \caption{A sample project dashboard within HRIStudio}
+  \end{center}
+  \label{fig:dashboard}
+\end{figure}
+
 The experiment designer mockups feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
-For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
+For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view (see  Figure \ref{fig:wizardview}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
+
+\begin{figure}[ht]
+  \begin{center}
+  	\includegraphics[width=0.4\paperwidth]{assets/mockups/wizardview}
+    \caption{The wizard's view during a live experiment}
+  \end{center}
+  \label{fig:wizardview}
+\end{figure}
 
 Our data playback and annotation mockups showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility. 
 
