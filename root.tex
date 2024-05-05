@@ -1,17 +1,17 @@
 % Standard Paper
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}
 
 % A4 Paper
 %\documentclass[a4paper, 10pt, conference]{ieeeconf}      
 
 % Only needed for \thanks command
-\IEEEoverridecommandlockouts 
+\IEEEoverridecommandlockouts
 
-% Override figure label scheme (not helping)
+% Override figure label scheme (not helping)fo
 %\renewcommand{\thefigure}{\thesection-\Alph{figure}}
 
 % Needed to meet printer requirements.
-\overrideIEEEmargins                                      
+\overrideIEEEmargins
 
 %In case you encounter the following error:
 %Error 1010 The PDF file may be corrupt (unable to open PDF file) OR
@@ -37,193 +37,200 @@
 \title{\LARGE \bf HRIStudio: A System for Conducting Human-Robot Interaction Studies using the Wizard-of-Oz Model}
 
 \author{Sean O'Connor$^{1}$ and L. Felipe Perrone$^{2}$% <-this % stops a space
-\thanks{$^{1}$Sean O'Connor is with the Department of Computer Science, 	
-		Bucknell University, Lewisburg, PA 17837, USA
-        {\tt\small sso005@bucknell.edu}}%
-\thanks{$^{2}$L. Felipe Perrone is with the Department of Computer Science,
+    \thanks{$^{1}$Sean O'Connor is with the Department of Computer Science,
         Bucknell University, Lewisburg, PA 17837, USA
-        {\tt\small perrone@bucknell.edu}}%
+            {\tt\small sso005@bucknell.edu}}%
+    \thanks{$^{2}$L. Felipe Perrone is with the Department of Computer Science,
+        Bucknell University, Lewisburg, PA 17837, USA
+            {\tt\small perrone@bucknell.edu}}%
 }
 
 \begin{document}
 
-\maketitle
-\thispagestyle{empty}
-\pagestyle{empty}
+    \maketitle
+    \thispagestyle{empty}
+    \pagestyle{empty}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
+    \begin{abstract}
 
-Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, presents challenges due to technical complexities and specialized expertise requirements. To address these challenges, we propose HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments in HRI research. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during live sessions, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers and promoting collaboration, HRIStudio aims to accelerate innovation in human-centered robotics research, empowering researchers to explore novel HRI concepts efficiently and effectively.
+        Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, presents challenges due to technical complexities and specialized expertise requirements. To address these challenges, we propose HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments in HRI research. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during live sessions, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers and promoting collaboration, HRIStudio aims to accelerate innovation in human-centered robotics research, empowering researchers to explore novel HRI concepts efficiently and effectively.
 
-\end{abstract}
+    \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
 
-Human-robot interaction (HRI) is becoming an increasingly important field of study, essential for understanding how robots should communicate, collaborate, and coexist with people. However, conducting HRI studies poses significant challenges, especially regarding the implementation of robot autonomy. The Wizard-of-Oz (WoZ) technique has emerged as a valuable experimental paradigm, allowing experimenters to simulate autonomous behaviors with a human operator, or ``wizard'' simulating the autonomous behavior of a robot, creating the illusion of an intelligent system for study participants. This enables rapid prototyping and evaluation of HRI concepts, without needing to build complex robot intelligence.
 
-While the WoZ technique is a powerful tool, conducting such experiments poses significant challenges. Researchers frequently face barriers related to the specialized tools and robotics expertise needed to orchestrate WoZ studies. Existing solutions often rely on low-level robot operating systems, limited proprietary platforms, or extensive custom coding, hindering accessibility for domain experts without extensive programming backgrounds.
+    \section{Introduction}
 
-Through a comprehensive review of current literature, we have identified a pressing need for a platform that simplifies the process of designing, executing, and analyzing experiments in the field of HRI research, by reducing technical barriers while enhancing reproducibility and collaboration across different robotics hardware and research groups. To address this gap, we are developing a novel web-based platform that enables intuitive configuration and operation of WoZ studies for HRI researchers and non-programmers alike. Our platform aims to handle the complexities of interfacing with a multitude of robotics platforms via the Robot Operating System (ROS), presenting users with a high-level, user-friendly interface for experiment design, live control and monitoring, and comprehensive post-study analysis.
+    Human-robot interaction (HRI) is becoming an increasingly important field of study, essential for understanding how robots should communicate, collaborate, and coexist with people. However, conducting HRI studies poses significant challenges, especially regarding the implementation of robot autonomy. The Wizard-of-Oz (WoZ) technique has emerged as a valuable experimental paradigm, allowing experimenters to simulate autonomous behaviors with a human operator, or ``wizard'' simulating the autonomous behavior of a robot, creating the illusion of an intelligent system for study participants. This enables rapid prototyping and evaluation of HRI concepts, without needing to build complex robot intelligence.
 
-The primary contributions of our work include a drag-and-drop visual programming interface for designing experiments without extensive coding, real-time control and observation capabilities during live experiment sessions, as well as comprehensive data logging and playback tools for analysis and reproducibility. With collaboration and reproducibility in mind, these features aim to maximize accessibility to HRI research while enforcing a standard of scientific integrity.
+    While the WoZ technique is a powerful tool, conducting such experiments poses significant challenges. Researchers frequently face barriers related to the specialized tools and robotics expertise needed to orchestrate WoZ studies. Existing solutions often rely on low-level robot operating systems, limited proprietary platforms, or extensive custom coding, hindering accessibility for domain experts without extensive programming backgrounds.
 
-By lowering the barriers to entry for non-programming domain experts, our platform seeks to accelerate research and innovation in human-centered robotics. The following sections will outline our proposed system design, experimental workflow plans, implementation progress, and future directions for this work.
+    Through a comprehensive review of current literature, we have identified a pressing need for a platform that simplifies the process of designing, executing, and analyzing experiments in the field of HRI research, by reducing technical barriers while enhancing reproducibility and collaboration across different robotics hardware and research groups. To address this gap, we are developing a novel web-based platform that enables intuitive configuration and operation of WoZ studies for HRI researchers and non-programmers alike. Our platform aims to handle the complexities of interfacing with a multitude of robotics platforms via the Robot Operating System (ROS), presenting users with a high-level, user-friendly interface for experiment design, live control and monitoring, and comprehensive post-study analysis.
 
-\section{State of the Art}
+    The primary contributions of our work include a drag-and-drop visual programming interface for designing experiments without extensive coding, real-time control and observation capabilities during live experiment sessions, as well as comprehensive data logging and playback tools for analysis and reproducibility. With collaboration and reproducibility in mind, these features aim to maximize accessibility to HRI research while enforcing a standard of scientific integrity.
 
-As HRI research continues to gain prominence, the WoZ technique has emerged as a valuable experimental paradigm. By simulating the autonomous robot behaviors through a human operator, or ``wizard'', researchers can rapidly prototype and evaluate novel HRI concepts without the need for complex autonomous system implementation. However, conducting WoZ studies poses significant challenges, and existing solutions often present barriers related to specialized tools, limited flexibility, or extensive programming requirements.
+    By lowering the barriers to entry for non-programming domain experts, our platform seeks to accelerate research and innovation in human-centered robotics. The following sections will outline our proposed system design, experimental workflow plans, implementation progress, and future directions for this work.
 
-Several frameworks have been proposed to facilitate WoZ experiments in HRI. Polonius \cite{Lu2011} offers a graphical user interface for wizards to control robots based on predefined finite state machine scripts. While built on the modular ROS platform, Polonius lacks enhanced tools for experiment design, data analysis, and cross-platform collaboration. NottReal \cite{Porcheron2020}, designed for voice user interface research, provides scripting capabilites and visual feedback to enhance the illusion of autonomy for participants. However, its scope is limited to audio-based interactions.
 
-WoZ4U \cite{Rietz2021} presents a user-friendly GUI for controlling Aldebaran's Pepper robot, lowering the barrier for non-programmers to conduct HRI studies. However, its applicability is restricted to Aldebaran platforms, hindering hardware flexibility. OpenWoZ \cite{Hoffman01} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. While promoting standardization, OpenWoZ still requires programming expertise for customization.
+    \section{State of the Art}
 
-A systematic review by Reik \cite{Riek2012} highlights prevalent WoZ applications in natural language processing and non-verbal behavior simulation but identifies gaps in methodological rigor, such as lack of wizard training and error measurement. The review proposes reporting guidelines to enhance transparency and reproducibility in WoZ studies.
+    As HRI research continues to gain prominence, the WoZ technique has emerged as a valuable experimental paradigm. By simulating the autonomous robot behaviors through a human operator, or ``wizard'', researchers can rapidly prototype and evaluate novel HRI concepts without the need for complex autonomous system implementation. However, conducting WoZ studies poses significant challenges, and existing solutions often present barriers related to specialized tools, limited flexibility, or extensive programming requirements.
 
-Despite these efforts, a comprehensive solution that simplifies the entire experimental workflow while promoting reproducibility and collaboration across diverse robotics platforms remains elusive. Existing frameworks often require extensive programming knowledge, lack robust tools for experiment design and analysis, or are limited to specific hardware platforms. Our proposed system aims to bridge this gap by providing an accessible, web-based interface for intuitive experiment creation, live operation, and comprehensive data analysis, while seamlessly integrating with various robotics platforms through ROS. By lowering technical barriers and facilitating cross-platform collaboration, our solution seeks to accelerate innovation in human-centered robotics research.
+    Several frameworks have been proposed to facilitate WoZ experiments in HRI. Polonius \cite{Lu2011} offers a graphical user interface for wizards to control robots based on predefined finite state machine scripts. While built on the modular ROS platform, Polonius lacks enhanced tools for experiment design, data analysis, and cross-platform collaboration. NottReal \cite{Porcheron2020}, designed for voice user interface research, provides scripting capabilites and visual feedback to enhance the illusion of autonomy for participants. However, its scope is limited to audio-based interactions.
 
-\section{Experimental Workflow}
+    WoZ4U \cite{Rietz2021} presents a user-friendly GUI for controlling Aldebaran's Pepper robot, lowering the barrier for non-programmers to conduct HRI studies. However, its applicability is restricted to Aldebaran platforms, hindering hardware flexibility. OpenWoZ \cite{Hoffman01} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. While promoting standardization, OpenWoZ still requires programming expertise for customization.
 
-\subsection{Experimental architecture}
+    A systematic review by Reik \cite{Riek2012} highlights prevalent WoZ applications in natural language processing and non-verbal behavior simulation but identifies gaps in methodological rigor, such as lack of wizard training and error measurement. The review proposes reporting guidelines to enhance transparency and reproducibility in WoZ studies.
 
-\begin{figure}[ht]
-  \begin{center}
-  	\includegraphics[width=0.4\paperwidth]{assets/diagrams/experimentalarchitecture}
-    \caption{A sample experiment examining comprehension over varying modes of interaction}
-  \end{center}
-  \label{experimentalarchitecture}
-\end{figure}
+    Despite these efforts, a comprehensive solution that simplifies the entire experimental workflow while promoting reproducibility and collaboration across diverse robotics platforms remains elusive. Existing frameworks often require extensive programming knowledge, lack robust tools for experiment design and analysis, or are limited to specific hardware platforms. Our proposed system aims to bridge this gap by providing an accessible, web-based interface for intuitive experiment creation, live operation, and comprehensive data analysis, while seamlessly integrating with various robotics platforms through ROS. By lowering technical barriers and facilitating cross-platform collaboration, our solution seeks to accelerate innovation in human-centered robotics research.
 
-To provide a structured and intuitive framework for designing WoZ experiments in HRI research, our platform introduces a hierarchical organization of experimental elements. At the highest level, an \textit{experiment} represents the complete scientific study being conducted. 
 
-Within each experiment, researchers can define a series of \textit{steps}, which represent conceptual stages or phases of the experimental protocol. These \textit{steps} serve as logical containers for grouping and sequencing the specific \textit{actions} that the robot or the wizard must perform throughout the duration of the study, as illustrated in Figure \ref{experimentalarchitecture}.
+    \section{Experimental Workflow}
 
-At the lowest level, \textit{actions} constitute the elemental units of the experimental workflow. Each \textit[action] corresponds to a specific physical or virtual task that the robot or wizard must execute. These tasks encompass a spectrum of activities, including robot movements, verbal interactions, or awaiting participant input.
+    \subsection{Experimental architecture}
 
-By breaking down the experimental procedure into this hierarchical structure, researchers can design complex HRI studies while maintaining a clear set of instructions for each wizard. The \textit{steps} provide a high-level overview of the experimental phases, while the \textit{actions} encapsulate the granular tasks and behaviors required from the robot or the wizard.
+    \begin{figure}[ht]
+        \begin{center}
+            \includegraphics[width=0.4\paperwidth]{assets/diagrams/experimentalarchitecture}
+            \caption{A sample experiment examining comprehension over varying modes of interaction}
+            \label{experimentalarchitecture}
+        \end{center}
 
-\subsection{Experiment creation process} 
+    \end{figure}
 
-To enable intuitive and streamlined experiment design, our platform features a user-friendly interface for creating and configuring WoZ experiments in HRI research. This interface leverages a visual programming system, allowing researchers to construct their experiments using a drag-and-drop approach.
+    To provide a structured and intuitive framework for designing WoZ experiments in HRI research, our platform introduces a hierarchical organization of experimental elements. At the highest level, an \textit{experiment} represents the complete scientific study being conducted.
 
-The core of the experiment creation process will include a library of pre-defined action components, representing common tasks and behaviors that robots and wizards may need to perform during an experiment, including robot movements, speech synthesis, and instructions for the wizard. Researchers are able to drag and drop these action components onto a canvas, arranging them into sequences that define the steps of their experiment. Each step can contain one or more actions, enabling the construction of complex experimental protocols.
+    Within each experiment, researchers can define a series of \textit{steps}, which represent conceptual stages or phases of the experimental protocol. These \textit{steps} serve as logical containers for grouping and sequencing the specific \textit{actions} that the robot or the wizard must perform throughout the duration of the study, as illustrated in Figure \ref{experimentalarchitecture}.
 
-In addition to arranging actions and steps, the interface will provide configuration options for each component, allowing researchers to go beyond the pre-defined action library to customize parameters. This configuration system will be accompanied by contextual help and documentation, guiding researchers through the process and providing examples or best practices for designing functional experiments. 
+    At the lowest level, \textit{actions} constitute the elemental units of the experimental workflow. Each \textit[action] corresponds to a specific physical or virtual task that the robot or wizard must execute. These tasks encompass a spectrum of activities, including robot movements, verbal interactions, or awaiting participant input.
 
-\subsection{Live experiment operation}
+    By breaking down the experimental procedure into this hierarchical structure, researchers can design complex HRI studies while maintaining a clear set of instructions for each wizard. The \textit{steps} provide a high-level overview of the experimental phases, while the \textit{actions} encapsulate the granular tasks and behaviors required from the robot or the wizard.
 
-During live experiment sessions, our platform offers multiple synchronized views to streamline operation, observation, and data collection. The primary view, tailored for the wizard, enables seamless control over the robot's actions and behaviors. Displaying the current step of the experiment along with associated actions, this interface facilitates intuitive navigation and note-taking. The wizard can progress through actions sequentially or manually trigger specific actions based on contextual cues or participant responses. Additionally, controls for robot movements, speech synthesis, and other essential functions are readily accessible.
+    \subsection{Experiment creation process}
 
-In parallel, the observer view supports live monitoring, note-taking, and potential interventions by additional researchers or personnel involved in the experiment. This feature ensures the option of continuous oversight without disrupting the participant's experience or the wizard's control. Given the web-based nature of our platform, multiple observers can concurrently access the observer view, enhancing collaboration and enabling comprehensive data collection and analysis.
+    To enable intuitive and streamlined experiment design, our platform features a user-friendly interface for creating and configuring WoZ experiments in HRI research. This interface leverages a visual programming system, allowing researchers to construct their experiments using a drag-and-drop approach.
 
-\subsection{Data logging, playback, and annotation}
+    The core of the experiment creation process will include a library of pre-defined action components, representing common tasks and behaviors that robots and wizards may need to perform during an experiment, including robot movements, speech synthesis, and instructions for the wizard. Researchers are able to drag and drop these action components onto a canvas, arranging them into sequences that define the steps of their experiment. Each step can contain one or more actions, enabling the construction of complex experimental protocols.
 
-Throughout the live experiment session, the platform will automatically log various data streams, including timestamped records of all executed actions and experimental events, exposed robot sensor data, and audio and video recordings of the participant's interactions with the robot. This logged data will be stored in JavaScript Object Notation (JSON) files kept in a secure encrypted location, enabling efficient post-experiment analysis and data mining without compromising the privacy of the subjects or researchers.
+    In addition to arranging actions and steps, the interface will provide configuration options for each component, allowing researchers to go beyond the pre-defined action library to customize parameters. This configuration system will be accompanied by contextual help and documentation, guiding researchers through the process and providing examples or best practices for designing functional experiments.
 
-After an experiment session, researchers will have access to a dedicated playback interface. This interface will allow them to review the recorded data streams synchronously, enabling a holistic understanding of the experiment's progression. This interface will support features such as: synchronized playback of audio, video, and sensor data streams, visual annotations and note taking capabilities, navigation and scrubbing through the recorded data with the ability to mark and note significant events or observations, and export options for selected data segments or annotations.
+    \subsection{Live experiment operation}
 
-By providing robust data logging and playback capabilities, our platform aims to enhance the rigor and reproducibility of HRI WoZ experiments.
+    During live experiment sessions, our platform offers multiple synchronized views to streamline operation, observation, and data collection. The primary view, tailored for the wizard, enables seamless control over the robot's actions and behaviors. Displaying the current step of the experiment along with associated actions, this interface facilitates intuitive navigation and note-taking. The wizard can progress through actions sequentially or manually trigger specific actions based on contextual cues or participant responses. Additionally, controls for robot movements, speech synthesis, and other essential functions are readily accessible.
 
-\section{Proposed System Design}
+    In parallel, the observer view supports live monitoring, note-taking, and potential interventions by additional researchers or personnel involved in the experiment. This feature ensures the option of continuous oversight without disrupting the participant's experience or the wizard's control. Given the web-based nature of our platform, multiple observers can concurrently access the observer view, enhancing collaboration and enabling comprehensive data collection and analysis.
 
-\subsection{High-level architecture}
+    \subsection{Data logging, playback, and annotation}
 
-\begin{figure}[ht]
-  \begin{center}
-  	\includegraphics[width=0.4\paperwidth]{assets/diagrams/highlevelarchitecture}
-    \caption{The high-level system architecture of HRIStudio}
-  \end{center}
-  \label{highlevelarchitecture}
-\end{figure}
+    Throughout the live experiment session, the platform will automatically log various data streams, including timestamped records of all executed actions and experimental events, exposed robot sensor data, and audio and video recordings of the participant's interactions with the robot. This logged data will be stored in JavaScript Object Notation (JSON) files kept in a secure encrypted location, enabling efficient post-experiment analysis and data mining without compromising the privacy of the subjects or researchers.
 
-The system is designed as a full-stack web application using the Next.js React framework. The frontend handles the user interface components like the experiment designer, monitoring dashboard, and analysis tools. The backend API logic, built using Next functions and tRPC, manages experiment data, user authentication, and communication with a ROS interface component. The ROS interface, implemented as a separate C++ node, translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture aims to leverage the benefits of Next's server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
+    After an experiment session, researchers will have access to a dedicated playback interface. This interface will allow them to review the recorded data streams synchronously, enabling a holistic understanding of the experiment's progression. This interface will support features such as: synchronized playback of audio, video, and sensor data streams, visual annotations and note taking capabilities, navigation and scrubbing through the recorded data with the ability to mark and note significant events or observations, and export options for selected data segments or annotations.
 
-\subsection{Key design principles}
+    By providing robust data logging and playback capabilities, our platform aims to enhance the rigor and reproducibility of HRI WoZ experiments.
 
-In developing this novel platform for WoZ experiments in HRI research, we have identified several guiding design principles to ensure its effectiveness, usability, and widespread adoption.
 
-Foremost, simplicity and accessibility are of the highest priority. Our primary objective is to lower the barrier of entry for non-programming domain experts who wish to conduct HRI studies. The platform will provide an intuitive and user-friendly interface, abstracting users from the intricacies of robot programming and autonomous system development. 
+    \section{Proposed System Design}
 
-Furthermore, our design principles prioritize reproducibility and collaboration. To achieve these objectives, we foster scientific integrity through extensive experiment logging and seamless export and sharing functionalities.
+    \subsection{High-level architecture}
 
-Additionally, our platform embraces a hardware-agnostic approach. Leveraging a modular and extensible architecture, it seamlessly integrates with a wide array of consumer and research robots through the ROS interface, ensuring compatibility with already available hardware.
+    \begin{figure}[ht]
+        \begin{center}
+            \includegraphics[width=0.4\paperwidth]{assets/diagrams/highlevelarchitecture}
+            \caption{The high-level system architecture of HRIStudio}
+            \label{highlevelarchitecture}
+        \end{center}
+    \end{figure}
 
-\section{IMPLEMENTATION PROGRESS}
+    The system is designed as a full-stack web application using the Next.js React framework. The frontend handles the user interface components like the experiment designer, monitoring dashboard, and analysis tools. The backend API logic, built using Next functions and tRPC, manages experiment data, user authentication, and communication with a ROS interface component. The ROS interface, implemented as a separate C++ node, translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture aims to leverage the benefits of Next's server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
 
-While the full realization of the proposed platform is still a work in progress, we have made notable strides in several key areas to lay the groundwork for its development. Our efforts thus far have primarily focused on exploring the core technologies, creating user interface mockups, and establishing a development roadmap.
+    \subsection{Key design principles}
 
-\subsection{Core technologies}
+    In developing this novel platform for WoZ experiments in HRI research, we have identified several guiding design principles to ensure its effectiveness, usability, and widespread adoption.
 
-We have chosen to leverage the Next.js React framework for building the web application element of our platform. Next provides several advantages, including server-side rendering, improved performance, and enhanced security compared to traditional single-page applications. With the application being available on the web, we aim to provide compatibility with most hardware currently available to researchers. Additionally, the framework's built-in support for API routes and its ability to integrate with tRPC will simplify the development of APIs for interfacing with the ROS interface.
+    Foremost, simplicity and accessibility are of the highest priority. Our primary objective is to lower the barrier of entry for non-programming domain experts who wish to conduct HRI studies. The platform will provide an intuitive and user-friendly interface, abstracting users from the intricacies of robot programming and autonomous system development.
 
-For the robot control layer, we plan to utilize ROS as the communication and control interface. ROS offers a modular and extensible architecture, enabling seamless integration with a multitude of consumer and research robotics platforms. By leveraging the widespread adoption of ROS in the robotics community, our platform aims to support a wide range robots out-of-the-box, with the support of the already existing ROS community available for new robot implementations.
+    Furthermore, our design principles prioritize reproducibility and collaboration. To achieve these objectives, we foster scientific integrity through extensive experiment logging and seamless export and sharing functionalities.
 
-\subsection{User interface mockups}
+    Additionally, our platform embraces a hardware-agnostic approach. Leveraging a modular and extensible architecture, it seamlessly integrates with a wide array of consumer and research robots through the ROS interface, ensuring compatibility with already available hardware.
 
-A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes using Figma for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
 
-The project dashboard mockups (see Figure \ref{dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
+    \section{IMPLEMENTATION PROGRESS}
 
-\begin{figure}[h]
-  \begin{center}
-  	\includegraphics[width=0.4\paperwidth]{assets/mockups/projectdashboard}
-    \caption{A sample project dashboard within HRIStudio}
-  \end{center}
-  \label{dashboard}
-\end{figure}
+    While the full realization of the proposed platform is still a work in progress, we have made notable strides in several key areas to lay the groundwork for its development. Our efforts thus far have primarily focused on exploring the core technologies, creating user interface mockups, and establishing a development roadmap.
 
-The experiment designer mockups depicted in Figure \ref{designer} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
+    \subsection{Core technologies}
 
-\begin{figure}[h]
-  \begin{center}
-  	\includegraphics[width=0.4\paperwidth]{assets/mockups/experimentdesigner}
-    \caption{A sample project's designer view in HRIStudio}
-  \end{center}
-  \label{designer}
-\end{figure}
+    We have chosen to leverage the Next.js React framework for building the web application element of our platform. Next provides several advantages, including server-side rendering, improved performance, and enhanced security compared to traditional single-page applications. With the application being available on the web, we aim to provide compatibility with most hardware currently available to researchers. Additionally, the framework's built-in support for API routes and its ability to integrate with tRPC will simplify the development of APIs for interfacing with the ROS interface.
 
-For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view (see  Figure \ref{wizardview}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
+    For the robot control layer, we plan to utilize ROS as the communication and control interface. ROS offers a modular and extensible architecture, enabling seamless integration with a multitude of consumer and research robotics platforms. By leveraging the widespread adoption of ROS in the robotics community, our platform aims to support a wide range robots out-of-the-box, with the support of the already existing ROS community available for new robot implementations.
 
-\begin{figure}[h]
-  \begin{center}
-  	\includegraphics[width=0.4\paperwidth]{assets/mockups/wizardview}
-    \caption{The wizard's view during a live experiment}
-  \end{center}
-  \label{wizardview}
-\end{figure}
+    \subsection{User interface mockups}
 
-Our data playback and annotation mockups (showcased in Figure \ref{playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility. 
+    A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes using Figma for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
 
-\begin{figure}[h]
-  \begin{center}
-  	\includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
-    \caption{The playback view of an experiment's trial}
-  \end{center}
-  \label{playback}
-\end{figure}
+    The project dashboard mockups (see Figure \ref{dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
-\subsection{Development roadmap}
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[width=0.4\paperwidth]{assets/mockups/projectdashboard}
+            \caption{A sample project dashboard within HRIStudio}
+            \label{dashboard}
+        \end{center}
+    \end{figure}
 
-While the UI mockups have laid a solid foundation, we still anticipate several challenges in transforming these designs into a fully functional platform. One of the primary challenges will be integrating the Next web application with the ROS interface, and handling the bi-directional communication between the two systems. We anticipate leveraging tRPC and WebSockets to facilitate real-time data exchange and robot control. 
+    The experiment designer mockups depicted in Figure \ref{designer} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
-Another significant challenge lies in developing the drag-and-drop experiment designer and encoding the experimental procedures into a standardized, shareable format. We plan to explore existing visual programming libraries and develop custom components to enable intuitive experiment construction and configuration.
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[width=0.4\paperwidth]{assets/mockups/experimentdesigner}
+            \caption{A sample project's designer view in HRIStudio}
+            \label{designer}
+        \end{center}
+    \end{figure}
 
-Additionally, implementing robust data logging and playback capabilities will require integrating with various data streams, such as audio, video, and sensor data, while ensuring synchronization and efficient storage and retrieval mechanisms. 
+    For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view (see Figure \ref{wizardview}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
 
-To address. these challenges, our development roadmap includes:
-\begin{itemize}
-	\item Establishing a stable Next codebase and integrating tRPC for API development. 
-	\item Implementing a C++ ROS node for handling robot communication and control.
-	\item Developing the drag-and-drop experiment designer using visual programming libraries and custom components.
-	\item Integrating data logging mechanisms for capturing experimental data streams. 
-	\item Building the data playback and annotation tools with synchronization and export capabilities.
-	\item Documenting the platform and creating tutorials and guidelines for researchers to adopt and contribute to the system.
-\end{itemize}
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[width=0.4\paperwidth]{assets/mockups/wizardview}
+            \caption{The wizard's view during a live experiment}
+            \label{wizardview}
+        \end{center}
+    \end{figure}
 
-By following this roadmap and addressing the identified challenges, we aim to transform the proposed platform into a fully functional and accessible tool for conducting WoZ experiments in HRI research, empowering researchers and fostering collaboration within the community. 
+    Our data playback and annotation mockups (showcased in Figure \ref{playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
+
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
+            \caption{The playback view of an experiment's trial}
+            \label{playback}
+        \end{center}
+    \end{figure}
+
+    \subsection{Development roadmap}
+
+    While the UI mockups have laid a solid foundation, we still anticipate several challenges in transforming these designs into a fully functional platform. One of the primary challenges will be integrating the Next web application with the ROS interface, and handling the bi-directional communication between the two systems. We anticipate leveraging tRPC and WebSockets to facilitate real-time data exchange and robot control.
+
+    Another significant challenge lies in developing the drag-and-drop experiment designer and encoding the experimental procedures into a standardized, shareable format. We plan to explore existing visual programming libraries and develop custom components to enable intuitive experiment construction and configuration.
+
+    Additionally, implementing robust data logging and playback capabilities will require integrating with various data streams, such as audio, video, and sensor data, while ensuring synchronization and efficient storage and retrieval mechanisms.
+
+    To address. these challenges, our development roadmap includes:
+    \begin{itemize}
+        \item Establishing a stable Next codebase and integrating tRPC for API development.
+        \item Implementing a C++ ROS node for handling robot communication and control.
+        \item Developing the drag-and-drop experiment designer using visual programming libraries and custom components.
+        \item Integrating data logging mechanisms for capturing experimental data streams.
+        \item Building the data playback and annotation tools with synchronization and export capabilities.
+        \item Documenting the platform and creating tutorials and guidelines for researchers to adopt and contribute to the system.
+    \end{itemize}
+
+    By following this roadmap and addressing the identified challenges, we aim to transform the proposed platform into a fully functional and accessible tool for conducting WoZ experiments in HRI research, empowering researchers and fostering collaboration within the community.
 
 %\section*{APPENDIX}
 %
@@ -235,7 +242,7 @@ By following this roadmap and addressing the identified challenges, we aim to tr
 %% TODO: Make acknowledgments
 %The preferred spelling of the word acknowledgment in America is without an e after the g. Avoid the stilted expression, One of us (R. B. G.) thanks . . .  Instead, try R. B. G. thanks. Put sponsor acknowledgments in the unnumbered footnote on the first page.
 
-\bibliography{refs}
-\bibliographystyle{plain}
+    \bibliography{refs}
+    \bibliographystyle{plain}
 
 \end{document}
