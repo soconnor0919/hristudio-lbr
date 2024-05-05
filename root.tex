@@ -7,8 +7,8 @@
 % Only needed for \thanks command
 \IEEEoverridecommandlockouts 
 
-% Override figure label scheme
-\renewcommand{\thefigure}{\thesection-\Alph{figure}}
+% Override figure label scheme (not helping)
+%\renewcommand{\thefigure}{\thesection-\Alph{figure}}
 
 % Needed to meet printer requirements.
 \overrideIEEEmargins                                      
@@ -43,7 +43,8 @@
 \thanks{$^{2}$L. Felipe Perrone is with the Department of Computer Science,
         Bucknell University, Lewisburg, PA 17837, USA
         {\tt\small perrone@bucknell.edu}}%
-}
+}
+
 \begin{document}
 
 \maketitle
@@ -93,12 +94,12 @@ Despite these efforts, a comprehensive solution that simplifies the entire exper
   	\includegraphics[width=0.4\paperwidth]{assets/diagrams/experimentalarchitecture}
     \caption{A sample experiment examining comprehension over varying modes of interaction}
   \end{center}
-  \label{fig:experimentalarchitecture}
+  \label{experimentalarchitecture}
 \end{figure}
 
 To provide a structured and intuitive framework for designing WoZ experiments in HRI research, our platform introduces a hierarchical organization of experimental elements. At the highest level, an \textit{experiment} represents the complete scientific study being conducted. 
 
-Within each experiment, researchers can define a series of \textit{steps}, which represent conceptual stages or phases of the experimental protocol. These \textit{steps} serve as logical containers for grouping and sequencing the specific \textit{actions} that the robot or the wizard must perform throughout the duration of the study, as illustrated in Figure \ref{fig:experimentalarchitecture}.
+Within each experiment, researchers can define a series of \textit{steps}, which represent conceptual stages or phases of the experimental protocol. These \textit{steps} serve as logical containers for grouping and sequencing the specific \textit{actions} that the robot or the wizard must perform throughout the duration of the study, as illustrated in Figure \ref{experimentalarchitecture}.
 
 At the lowest level, \textit{actions} constitute the elemental units of the experimental workflow. Each \textit[action] corresponds to a specific physical or virtual task that the robot or wizard must execute. These tasks encompass a spectrum of activities, including robot movements, verbal interactions, or awaiting participant input.
 
@@ -135,7 +136,7 @@ By providing robust data logging and playback capabilities, our platform aims to
   	\includegraphics[width=0.4\paperwidth]{assets/diagrams/highlevelarchitecture}
     \caption{The high-level system architecture of HRIStudio}
   \end{center}
-  \label{fig:highlevelarchitecture}
+  \label{highlevelarchitecture}
 \end{figure}
 
 The system is designed as a full-stack web application using the Next.js React framework. The frontend handles the user interface components like the experiment designer, monitoring dashboard, and analysis tools. The backend API logic, built using Next functions and tRPC, manages experiment data, user authentication, and communication with a ROS interface component. The ROS interface, implemented as a separate C++ node, translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture aims to leverage the benefits of Next's server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
@@ -164,44 +165,44 @@ For the robot control layer, we plan to utilize ROS as the communication and con
 
 A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes using Figma for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
 
-The project dashboard mockups (see Figure \ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
+The project dashboard mockups (see Figure \ref{dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
 \begin{figure}[h]
   \begin{center}
   	\includegraphics[width=0.4\paperwidth]{assets/mockups/projectdashboard}
     \caption{A sample project dashboard within HRIStudio}
   \end{center}
-  \label{fig:dashboard}
+  \label{dashboard}
 \end{figure}
 
-The experiment designer mockups depicted in Figure \ref{fig:designer} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
+The experiment designer mockups depicted in Figure \ref{designer} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
 \begin{figure}[h]
   \begin{center}
   	\includegraphics[width=0.4\paperwidth]{assets/mockups/experimentdesigner}
     \caption{A sample project's designer view in HRIStudio}
   \end{center}
-  \label{fig:designer}
+  \label{designer}
 \end{figure}
 
-For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view (see  Figure \ref{fig:wizardview}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
+For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view (see  Figure \ref{wizardview}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
 
 \begin{figure}[h]
   \begin{center}
   	\includegraphics[width=0.4\paperwidth]{assets/mockups/wizardview}
     \caption{The wizard's view during a live experiment}
   \end{center}
-  \label{fig:wizardview}
+  \label{wizardview}
 \end{figure}
 
-Our data playback and annotation mockups (showcased in Figure \ref{fig:playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility. 
+Our data playback and annotation mockups (showcased in Figure \ref{playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility. 
 
 \begin{figure}[h]
   \begin{center}
   	\includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
     \caption{The playback view of an experiment's trial}
   \end{center}
-  \label{fig:playback}
+  \label{playback}
 \end{figure}
 
 \subsection{Development roadmap}
