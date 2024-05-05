@@ -17,7 +17,7 @@ variables:
   # LATEX_IMAGE: listx/texlive:2020
   LATEX_IMAGE: thomasweise/docker-texlive-full
 
-build:
+typeset:
   image: $LATEX_IMAGE
   script:
     - latexmk -pdf
