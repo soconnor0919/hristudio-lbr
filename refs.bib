@@ -39,12 +39,15 @@
    title = {The {O}z of {W}izard: Simulating the Human for Interaction Research},
    year = {2009},
 }
-@misc{Hoffman01,
+@inproceedings{Hoffman01,
    abstract = {Wizard-of-Oz (WoZ) is a common technique enabling HRI researchers to explore aspects of interaction not yet backed by autonomous systems. A standardized, open, and flexible WoZ framework could therefore serve the community and accelerate research both for the design of robotic systems and for their evaluation. This paper presents the definition of Open-WoZ, a Wizard-of-Oz framework for HRI, designed to be updated during operation by the researcher controlling the robot. OpenWoZ is implemented as a thin HTTP server running on the robot, and a cloud-backed multi-platform client schema. The WoZ server accepts representational state transfer (REST) requests from a number and variety of clients simultaneously. This "separation of con-cerns" in OpenWoZ allows addition of commands , new sequencing of behaviors, and adjustment of parameters, all during run-time.},
    author = {Guy Hoffman},
    title = {Open{W}o{Z}: A Runtime-Configurable {W}izard-of-{O}z Framework for Human-Robot Interaction},
-   url = {www.aaai.org},
+   booktitle = {Proceedings of the 2016 AAAI Spring Symposium}, 
+   publisher = {Association for the Advancement of Artificial Intelligence},
+   year = {2016} 
 }
+
 @article{Rietz2021,
    abstract = {Wizard-of-Oz experiments play a vital role in Human-Robot Interaction (HRI), as they allow for quick and simple hypothesis testing. Still, a publicly available general tool to conduct such experiments is currently not available in the research community, and researchers often develop and implement their own tools, customized for each individual experiment. Besides being inefficient in terms of programming efforts, this also makes it harder for non-technical researchers to conduct Wizard-of-Oz experiments. In this paper, we present a general and easy-to-use tool for the Pepper robot, one of the most commonly used robots in this context. While we provide the concrete interface for Pepper robots only, the system architecture is independent of the type of robot and can be adapted for other robots. A configuration file, which saves experiment-specific parameters, enables a quick setup for reproducible and repeatable Wizard-of-Oz experiments. A central server provides a graphical interface via a browser while handling the mapping of user input to actions on the robot. In our interface, keyboard shortcuts may be assigned to phrases, gestures, and composite behaviors to simplify and speed up control of the robot. The interface is lightweight and independent of the operating system. Our initial tests confirm that the system is functional, flexible, and easy to use. The interface, including source code, is made commonly available, and we hope that it will be useful for researchers with any background who want to conduct HRI experiments.},
    author = {Finn Rietz and Alexander Sutherland and Suna Bensch and Stefan Wermter and Thomas Hellström},
@@ -63,11 +66,12 @@
    author = {David V. Lu and William D. Smart},
    doi = {10.1145/1957656.1957729},
    isbn = {9781450305617},
-   journal = {HRI 2011 - Proceedings of the 6th ACM/IEEE International Conference on Human-Robot Interaction},
+   booktitle = {Proceedings of the 6th ACM/IEEE International Conference on Human-Robot Interaction},
    pages = {197-198},
    title = {Polonius: A {W}izard of {O}z interface for {HRI} experiments},
    year = {2011},
 }
+
 @inproceedings{Porcheron2020,
    abstract = {We present NottReal, an application designed for simulating Voice User Interfaces (VUIs) in Wizard of Oz studies. We briefly discuss the premise and advantages of the Wizard of Oz method before moving onto introducing the design of the application, which we have iteratively developed and refined through a number of studies.},
    author = {Martin Porcheron and Joel E. Fischer and Michel Valstar},
