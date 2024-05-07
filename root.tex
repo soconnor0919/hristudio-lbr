@@ -80,7 +80,7 @@ We have identified several guiding design principles to maximize HRIStudio's eff
 
 Furthermore, we determined that the framework should also support multiple user accounts and data sharing to enable collaborations between the members of a team and the dissemination of experiments across different teams. By incorporating these design goals, HRIStudio prioritizes experiment design, collaborative workflows, methodological rigor, and scientific reproducibility.
 
-\section{Experimental Workflow}
+\section{Design of the Experimental Workflow}
 
 \subsection{Organization of a user study}
 
@@ -124,19 +124,19 @@ Throughout the live experiment session, the platform automatically logs various 
 
 After a live experiment session, researchers may use a \emph{Playback} view to inspect the recorded data streams and develop a holistic understanding of the experiment's progression. This interface supports features such as playback of recorded data such as audio, video, and sensor data streams, scrubbing of recorded data with the ability to mark and note significant events or observations, and export options for selected data segments or annotations.
 
-\section{IMPLEMENTATION PROGRESS}
+\section{IMPLEMENTATION}
 
-While the full realization of the proposed platform is still a work in progress, we have made notable strides in several key areas to lay the groundwork for its development. Our efforts thus far have primarily focused on exploring the core technologies, creating user interface mockups, and establishing a development roadmap.
+The realization of the proposed platform is a work in progress. So far, we have made significant advances on the design of the overall framework and of its several components while exploring underlying technologies, wireframing user views and interfaces, and establishing a development roadmap.
 
-\subsection{Core technologies}
+\subsection{Core technologies used}
 
-We have chosen to leverage the \emph{Next.js React} \cite{next} framework for building the web application element of our platform. Next.js provides server-side rendering, improved performance, and enhanced security. By making HRIStudio a web application, we provide compatibility with an array of hardware options available to researchers. Additionally, the framework's built-in support for API routes and its ability to integrate with tRPC will simplify the development of APIs for interfacing with the ROS interface.
+We are leveraging the \emph{Next.js React} \cite{next} framework for building our framework as a web application. Next.js provides server-side rendering, improved performance, and enhanced security. By making HRIStudio a web application, we achieve independence from hardware and operating system. We are building into the framework support for API routes and integration with \emph{TypeScript Remote Procedure Call} (tRPC), which simplifies the development of APIs for interfacing with the ROS interface.
 
-For the robot control layer, we plan to utilize ROS as the communication and control interface. ROS offers a modular and extensible architecture, enabling seamless integration with a multitude of consumer and research robotics platforms. By leveraging the widespread adoption of ROS in the robotics community, our platform aims to support a wide range robots out-of-the-box, with the support of the already existing ROS community available for new robot implementations.
+For the robot control layer, we utilize ROS as the communication and control interface. ROS offers a modular and extensible architecture, enabling seamless integration with a multitude of consumer and research robotics platforms. Thanks to the widespread adoption of ROS in the robotics community, HRIStudio will be able to support a wide range robots out-of-the-box by leveraging the  efforts of the ROS community for new robot platforms.
 
 \subsection{High-level architecture}
 
-We have designed our system as a full-stack web application using the \emph{Next.js React} framework. \cite{next} The frontend handles user interface components such as an experiment designer, a monitoring dashboard, and analysis tools. The backend API logic, built using Next.js functions and tRPC\cite{trpc}, manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js's server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
+We have designed our system as a full-stack web application.  The frontend handles user interface components such as the experiment \emph{Designer} view, the experiment \emph{Execution} view, and the \emph{Playback} view. The backend API logic manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js' server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
 
 \begin{figure}[ht]
    \vskip -0.3cm
@@ -146,12 +146,14 @@ We have designed our system as a full-stack web application using the \emph{Next
         \caption{The high-level system architecture of HRIStudio}
         \label{highlevelarchitecture}
     \end{center}
-     \vskip -0.4cm
+     \vskip -0.7cm
 \end{figure}
 
 \subsection{User interface mockups}
 
-A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes using Figma for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
+{\bf [STOPPED HERE] -- to dos: use the same names given previously to each view of the user interface, that is, Designer, Execution, Playback, etc. Without this note, we basically fit exactly in 4 pages.}
+
+A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
 
 The project dashboard mockups (see Figure \ref{dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
