@@ -35,9 +35,8 @@
 
 \author{Sean O'Connor and L. Felipe Perrone$^{*}$% <-this % stops a space
 %% TODO: Clean up thanks section
-    \thanks{$^{*}$Both authors are with the Department of Computer Science,
-        Bucknell University, Lewisburg, PA 17837, USA.
-            They can be reached at {\tt\small sso005@bucknell.edu} and {\tt\small perrone@bucknell.edu}}%
+    \thanks{$^{*}$Both authors are with the Department of Computer Science at
+        Bucknell University in Lewisburg, PA, USA. They can be reached at {\tt\small sso005@bucknell.edu} and {\tt\small perrone@bucknell.edu}}%
 }
 
 \begin{document}
@@ -68,18 +67,22 @@ Through a comprehensive review of current literature, we have identified a press
 
 \section{State-of-the-Art}
 
-The importance of the WoZ paradigm for user studies in social robotics is illustrated by the 
-several frameworks that have been developed to support it. We describe here some of the most notable.
+The importance of the WoZ paradigm for user studies in social robotics is illustrated by the several frameworks that have been developed to support it. We describe some of the most notable as follows.
 
-Polonius \cite{Lu2011} offers a graphical user interface for wizards to control robots based on predefined finite state machine scripts. While built on the modular ROS platform, Polonius lacks enhanced tools for experiment design, data analysis, and cross-platform collaboration. NottReal \cite{Porcheron2020}, designed for voice user interface research, provides scripting capabilities and visual feedback to enhance the illusion of autonomy for participants. However, its scope is limited to audio-based interactions.
+\emph{Polonius}  \cite{Lu2011}, which is based on the modular ROS platform, offers a graphical user interface for wizards to define finite state machine scripts that drive the behavior of robots during experiments. \emph{NottReal} \cite{Porcheron2020} was designed for Woz studies of voice user interfaces. It provides scripting capabilities and visual feedback to simulate autonomous behavior for participants. \emph{WoZ4U}  \cite{Rietz2021} presents a user-friendly GUI that makes HRI studies more accessible to non-programmers. The tight hardware focus on Aldebaran's Pepper, however, constrains the tool's applicability. \emph{OpenWoZ} \cite{Hoffman2016} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. The platform allows one with programming expertise to create standard, customized robot behaviors for user studies.
 
-WoZ4U \cite{Rietz2021} presents a user-friendly GUI that makes HRI studies more accessible to non-programmers. The tight hardware focus on Aldebaran's Pepper, however, constrains the tool's applicability. OpenWoZ \cite{Hoffman2016} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. OpenWoZ promotes standardization, but requires programming expertise for customization. A systematic review by Reik \cite{Riek2012} highlights prevalent WoZ applications in natural language processing and non-verbal behavior simulation but identifies gaps in methodological rigor, such as lack of wizard training and error measurement. The review proposes reporting guidelines to enhance transparency and reproducibility in WoZ studies.
+In addition to the aforementioned frameworks, we considered Riek's systematic analysis of published WoZ which stresses the need for increased methodological rigor, transparency and reproducibility of WoZ studies. \cite{Riek2012} Altogether, the literature inspired us to design HRIStudio as a platform that offers comprehensive support for WoZ studies in social robotics. Our design goals include offering a platform that is as ``robot-agnostic'' as possible and which offers its users guidance to specify and execute WoZ studies that are methodologically sound and maximally reproducible. As such, HRIStudio aims to offer an easy user interface that allows for experiments to be scripted and executed easily and which allows for the aggregation of experimental data and other assets generated in a study.
 
-These efforts have inspired us to pursue the consolidation of their various features into a new tool that offers more comprehensive support for Woz Experiments in social robotics. In the conceptualization of HRIStudio, we have aimed to incorporate an intuitive GUI, support for a broader range of robots, mechanisms for describing WoZ experiments, and the centralized aggregation of results and experimental data to enable easier collaboration, dissemination, and reproduction. 
- 
 \section{Experimental Workflow}
 
 \subsection{Experimental architecture}
+
+% events and sequences; time-based (rigid script; no room for spontaneous reactions by the wizard)
+% time-driven script - rigid, imposed by the programming - shows lack of intelligence, autonomy
+
+% event-driven script - flexible, allows wizard to react to unexpected interactions - but may create different experiences for different users - wizard can take action when an unforeseen circumstance emerges that poses a threat to the safety of the human subject, of the robot, or of the environment around the experiment.
+
+% every experiment is potentially unique - there is unlikely to be a perfect match of the reactions of any two human subjects - this justifies the existence of a mechanism to annotate the video feed of every experiment
 
 We propose a hierarchical organization of experimental elements to provide a structured framework for designing WoZ experiments in HRI research. At the highest level, an \textit{experiment} represents the complete scientific study being conducted. Within each experiment, researchers can define a series of \textit{steps}, which represent conceptual stages or phases of the experimental protocol. These \textit{steps} serve as logical containers for grouping and sequencing the specific \textit{actions} that the robot or the wizard must perform throughout the duration of the study, as illustrated in Figure \ref{experimentalarchitecture}.
 
