@@ -70,9 +70,9 @@ Through a comprehensive review of current literature, we have identified a press
 
 The importance of the WoZ paradigm for user studies in social robotics is illustrated by the several frameworks that have been developed to support it. We describe some of the most notable as follows.
 
-\emph{Polonius}  \cite{Lu2011}, which is based on the modular ROS platform, offers a graphical user interface for wizards to define finite state machine scripts that drive the behavior of robots during experiments. \emph{NottReal} \cite{Porcheron2020} was designed for WoZ studies of voice user interfaces. It provides scripting capabilities and visual feedback to simulate autonomous behavior for participants. \emph{WoZ4U}  \cite{Rietz2021} presents a user-friendly GUI that makes HRI studies more accessible to non-programmers. The tight hardware focus on Aldebaran's Pepper, however, constrains the tool's applicability. \emph{OpenWoZ} \cite{Hoffman2016} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. The platform allows one with programming expertise to create standard, customized robot behaviors for user studies.
+\emph{Polonius}~\cite{Lu2011}, which is based on the modular ROS platform, offers a graphical user interface for wizards to define finite state machine scripts that drive the behavior of robots during experiments. \emph{NottReal}~\cite{Porcheron2020} was designed for WoZ studies of voice user interfaces. It provides scripting capabilities and visual feedback to simulate autonomous behavior for participants. \emph{WoZ4U}~\cite{Rietz2021} presents a user-friendly GUI that makes HRI studies more accessible to non-programmers. The tight hardware focus on Aldebaran's Pepper, however, constrains the tool's applicability. \emph{OpenWoZ}~\cite{Hoffman2016} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. The platform allows one with programming expertise to create standard, customized robot behaviors for user studies.
 
-In addition to the aforementioned frameworks, we considered Riek's systematic analysis of published WoZ experiments, which stresses the need for increased methodological rigor, transparency and reproducibility of WoZ studies. \cite{Riek2012} Altogether, the literature inspired us to design HRIStudio as a platform that offers comprehensive support for WoZ studies in social robotics. Our design goals include offering a platform that is as ``robot-agnostic'' as possible and which offers its users guidance to specify and execute WoZ studies that are methodologically sound and maximally reproducible. As such, HRIStudio aims to offer an easy user interface that allows for experiments to be scripted and executed easily and which allows for the aggregation of experimental data and other assets generated in a study.
+In addition to the aforementioned frameworks, we considered Riek's systematic analysis of published WoZ experiments, which stresses the need for increased methodological rigor, transparency and reproducibility of WoZ studies.~\cite{Riek2012} Altogether, the literature inspired us to design HRIStudio as a platform that offers comprehensive support for WoZ studies in social robotics. Our design goals include offering a platform that is as ``robot-agnostic'' as possible and which offers its users guidance to specify and execute WoZ studies that are methodologically sound and maximally reproducible. As such, HRIStudio aims to offer an easy user interface that allows for experiments to be scripted and executed easily and which allows for the aggregation of experimental data and other assets generated in a study.
 
 \section{Overarching Design Goals}
 
@@ -86,18 +86,13 @@ Furthermore, we determined that the framework should also support multiple user 
 
 With HRIStudio, we define a hierarchical organization of elements to express WoZ user studies for HRI research. An experimenter starts by creating and configuring a \emph{study} element, which will comprise multiple instantiations of one same experimental script encapsulated in an element called \emph{experiment}, which captures the experiences of a specific human subject with the robot designated in the script. 
 
-Each \emph{experiment} comprises a sequence of one or more \emph{step} elements. Each \emph{step} models a phase of the experiment and aggregates a sequence of \emph{action} elements, which are fine-grained, specific tasks to be executed either by the wizard or by the robot. An \emph{action} targeted to the wizard provides guidance and maximizes the chances of consistent behavior. An \emph{action} targeted at the robot causes it to execute movements or verbal interactions, or causes it to wait for a human subject's input or response. The system executes the \emph{actions} in an experimental script asynchronously guiding the wizard's behavior and allowing them to simulate the robot's autonomous intelligence by responding to the human subject in real time. In order to enforce consistency across multiple runs of the \emph{experiment}, HRIStudio uses specifications encoded in the \emph{study} element to inform the wizard on how to constrain their behavior to a set of possible types of interventions.
+Each \emph{experiment} comprises a sequence of one or more \emph{step} elements. Each \emph{step} models a phase of the experiment and aggregates a sequence of \emph{action} elements, which are fine-grained, specific tasks to be executed either by the wizard or by the robot. An \emph{action} targeted to the wizard provides guidance and maximizes the chances of consistent behavior. An \emph{action} targeted at the robot causes it to execute movements or verbal interactions, or causes it to wait for a human subject's input or response.
+
+The system executes the \emph{actions} in an experimental script asynchronously and in an event-driven manner, guiding the wizard's behavior and allowing them to simulate the robot's autonomous intelligence by responding to the human subject in real time based on the human's actions and reactions. This event-driven approach allows for flexible and spontaneous reactions by the wizard, enabling a more natural and intelligent interaction with the human subject. In contrast, a time-driven script with rigid, imposed timing would show a lack of intelligence and autonomy on the part of the robot.
+
+In order to enforce consistency across multiple runs of the \emph{experiment}, HRIStudio uses specifications encoded in the \emph{study} element to inform the wizard on how to constrain their behavior to a set of possible types of interventions. Although every experiment is potentially unique due to the unlikely perfect match of reactions between human subjects, this mechanism allows for annotating the data feed and capturing the nuances of each unique interaction.
 
 Figure~\ref{fig:userstudy} illustrates this hierarchy of elements with a practical example.  We argue that this hierarchical structure for the experimental procedure in a user study benefits methodological rigor and reproducibility while affording the researcher the ability to design complex HRI studies while guiding the wizard to follow a consistent set of instructions.
-
-%% TODO: Include the following:
-
-% events and sequences; time-based (rigid script; no room for spontaneous reactions by the wizard)
-% time-driven script - rigid, imposed by the programming - shows lack of intelligence, autonomy
-
-% event-driven script - flexible, allows wizard to react to unexpected interactions - but may create different experiences for different users - wizard can take action when an unforeseen circumstance emerges that poses a threat to the safety of the human subject, of the robot, or of the environment around the experiment.
-
-% every experiment is potentially unique - there is unlikely to be a perfect match of the reactions of any two human subjects - this justifies the existence of a mechanism to annotate the video feed of every experiment
 
 \begin{figure}[ht]
    \vskip -0.3cm
@@ -126,7 +121,7 @@ Throughout the live experiment session, the platform automatically logs various 
 
 After a live experiment session, researchers may use a \emph{Playback} view to inspect the recorded data streams and develop a holistic understanding of the experiment's progression. This interface supports features such as playback of recorded data such as audio, video, and sensor data streams, scrubbing of recorded data with the ability to mark and note significant events or observations, and export options for selected data segments or annotations.
 
-\section{IMPLEMENTATION}
+\section{Implementation}
 
 The realization of the proposed platform is a work in progress. So far, we have made significant advances on the design of the overall framework and of its several components while exploring underlying technologies, wireframing user views and interfaces, and establishing a development roadmap.
 
@@ -205,22 +200,20 @@ Our playback mockups (showcased in Figure~\ref{fig:playback}) showcase features 
 
 \subsection{Development roadmap}
 
-While the UI mockups have laid a solid foundation, we still anticipate several challenges in transforming these designs into a fully functional platform. One of the primary challenges will be integrating the Next.js web application with the ROS interface, and handling the bi-directional communication between the two systems. We anticipate leveraging tRPC and WebSockets to facilitate real-time data exchange and robot control.
+While the UI mockups have laid a solid foundation, we anticipate challenges in transforming these designs into a fully functional platform, such as integrating the Next.js web application with the ROS interface and handling bi-directional communication between the two. We plan to leverage tRPC and WebSockets for real-time data exchange and robot control.
 
-Another significant challenge lies in developing the drag-and-drop experiment designer and encoding the experimental procedures into a standardized, shareable format. We plan to explore existing visual programming libraries and develop custom components to enable intuitive experiment construction and configuration.
+Another key challenge is developing the drag-and-drop experiment designer and encoding procedures into a shareable format. We will explore visual programming libraries and develop custom components for intuitive experiment construction.
 
-Additionally, implementing robust data logging and playback capabilities will require integrating with various data streams, such as audio, video, and sensor data, while ensuring synchronization and efficient storage and retrieval mechanisms.
+Implementing robust data logging and synchronized playback of audio, video, and sensor data while ensuring efficient storage and retrieval is also crucial.
 
-%% TODO: Consolidate roadmap, consider replacing with future challenges/work.
-
-To address. these challenges, our development roadmap includes:
+To address these challenges, our development roadmap includes:
 \begin{itemize}
-    \item Establishing a stable Next.js codebase and integrating tRPC for API development.
-    \item Implementing a C++ ROS node for handling robot communication and control.
-    \item Developing the drag-and-drop experiment designer using visual programming libraries and custom components.
-    \item Integrating data logging mechanisms for capturing experimental data streams.
-    \item Building the data playback and annotation tools with synchronization and export capabilities.
-    \item Documenting the platform and creating tutorials and guidelines for researchers to adopt and contribute to the system.
+    \item Establishing a stable Next.js codebase with tRPC integration
+    \item Implementing a ROS interface node for robot communication    
+    \item Developing the visual experiment designer
+    \item Integrating data logging for capturing experimental data streams.
+    \item Building playback and annotation tools with export capabilities.
+    \item Creating tutorials and documentation for researcher adoption
 \end{itemize}
 
 By following this roadmap and addressing the identified challenges, we aim to transform the proposed platform into a fully functional and accessible tool for conducting WoZ experiments in HRI research, empowering researchers and fostering collaboration within the community.
