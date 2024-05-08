@@ -34,8 +34,7 @@
 
 \title{\LARGE \bf HRIStudio: A Framework for Wizard-of-Oz Experiments in Human-Robot Interaction Studies}
 
-\author{Sean O'Connor and L. Felipe Perrone$^{*}$% <-this % stops a space
-%% TODO: Clean up thanks section
+\author{Sean O'Connor and L. Felipe Perrone$^{*}$
     \thanks{$^{*}$Both authors are with the Department of Computer Science at
         Bucknell University in Lewisburg, PA, USA. They can be reached at {\tt\small sso005@bucknell.edu} and {\tt\small perrone@bucknell.edu}}%
 }
@@ -57,10 +56,11 @@ Human-robot interaction (HRI) research plays a pivotal role in shaping how robot
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% TODO: Update mockup pictures with photo of subject and robot
 
 \section{Introduction}
 
-Human-robot interaction (HRI) is an essential field of study for understanding how robots should communicate, collaborate, and coexist with people. The development of autonomous behaviors in social robot applications, however, offers a number of challenges. The Wizard-of-Oz (WoZ) technique has emerged as a valuable experimental paradigm to address these difficulties as it allows experimenters to simulate a robot's autonomous behaviors. With WoZ, a human operator (the \emph{``wizard''}) can operate the robot remotely, essentially simulating its autonomous behavior during user studies. This enables the rapid prototyping and continuous refinement of human-robot interactions postponing to later the full development of complex robot behaviors.
+Human-robot interaction (HRI) is an essential field of study for understanding how robots should communicate, collaborate, and coexist with people. The development of autonomous behaviors in social robot applications, however, offers a number of challenges. The Wizard-of-Oz (WoZ) technique has emerged as a valuable experimental paradigm to address these difficulties, as it allows experimenters to simulate a robot's autonomous behaviors. With WoZ, a human operator (the \emph{``wizard''}) can operate the robot remotely, essentially simulating its autonomous behavior during user studies. This enables the rapid prototyping and continuous refinement of human-robot interactions postponing to later the full development of complex robot behaviors.
 
 While WoZ is a powerful paradigm, it does not eliminate all experimental challenges. Researchers may face barriers related to the use of specialized tools and methodologies involved in WoZ user studies and also find difficulties in creating fully reproducible experiments. Existing solutions often rely on low-level robot operating systems, limited proprietary platforms, or require extensive custom coding, which can restrict their use to domain experts with extensive technical backgrounds.
 
@@ -70,7 +70,7 @@ Through a comprehensive review of current literature, we have identified a press
 
 The importance of the WoZ paradigm for user studies in social robotics is illustrated by the several frameworks that have been developed to support it. We describe some of the most notable as follows.
 
-\emph{Polonius}  \cite{Lu2011}, which is based on the modular ROS platform, offers a graphical user interface for wizards to define finite state machine scripts that drive the behavior of robots during experiments. \emph{NottReal} \cite{Porcheron2020} was designed for Woz studies of voice user interfaces. It provides scripting capabilities and visual feedback to simulate autonomous behavior for participants. \emph{WoZ4U}  \cite{Rietz2021} presents a user-friendly GUI that makes HRI studies more accessible to non-programmers. The tight hardware focus on Aldebaran's Pepper, however, constrains the tool's applicability. \emph{OpenWoZ} \cite{Hoffman2016} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. The platform allows one with programming expertise to create standard, customized robot behaviors for user studies.
+\emph{Polonius}  \cite{Lu2011}, which is based on the modular ROS platform, offers a graphical user interface for wizards to define finite state machine scripts that drive the behavior of robots during experiments. \emph{NottReal} \cite{Porcheron2020} was designed for WoZ studies of voice user interfaces. It provides scripting capabilities and visual feedback to simulate autonomous behavior for participants. \emph{WoZ4U}  \cite{Rietz2021} presents a user-friendly GUI that makes HRI studies more accessible to non-programmers. The tight hardware focus on Aldebaran's Pepper, however, constrains the tool's applicability. \emph{OpenWoZ} \cite{Hoffman2016} proposes a runtime-configurable framework with a multi-client architecture, enabling evaluators to modify robot behaviors during experiments. The platform allows one with programming expertise to create standard, customized robot behaviors for user studies.
 
 In addition to the aforementioned frameworks, we considered Riek's systematic analysis of published WoZ experiments, which stresses the need for increased methodological rigor, transparency and reproducibility of WoZ studies. \cite{Riek2012} Altogether, the literature inspired us to design HRIStudio as a platform that offers comprehensive support for WoZ studies in social robotics. Our design goals include offering a platform that is as ``robot-agnostic'' as possible and which offers its users guidance to specify and execute WoZ studies that are methodologically sound and maximally reproducible. As such, HRIStudio aims to offer an easy user interface that allows for experiments to be scripted and executed easily and which allows for the aggregation of experimental data and other assets generated in a study.
 
@@ -88,7 +88,9 @@ With HRIStudio, we define a hierarchical organization of elements to express WoZ
 
 Each \emph{experiment} comprises a sequence of one or more \emph{step} elements. Each \emph{step} models a phase of the experiment and aggregates a sequence of \emph{action} elements, which are fine-grained, specific tasks to be executed either by the wizard or by the robot. An \emph{action} targeted to the wizard provides guidance and maximizes the chances of consistent behavior. An \emph{action} targeted at the robot causes it to execute movements or verbal interactions, or causes it to wait for a human subject's input or response. The system executes the \emph{actions} in an experimental script asynchronously guiding the wizard's behavior and allowing them to simulate the robot's autonomous intelligence by responding to the human subject in real time. In order to enforce consistency across multiple runs of the \emph{experiment}, HRIStudio uses specifications encoded in the \emph{study} element to inform the wizard on how to constrain their behavior to a set of possible types of interventions.
 
-Figure~\ref{experimentalarchitecture} illustrates this hierarchy of elements with a practical example.  We argue that this hierarchical structure for the experimental procedure in a user study benefits methodological rigor and reproducibility while affording the researcher the ability to design complex HRI studies while guiding the wizard to follow a consistent set of instructions.
+Figure~\ref{fig:userstudy} illustrates this hierarchy of elements with a practical example.  We argue that this hierarchical structure for the experimental procedure in a user study benefits methodological rigor and reproducibility while affording the researcher the ability to design complex HRI studies while guiding the wizard to follow a consistent set of instructions.
+
+%% TODO: Include the following:
 
 % events and sequences; time-based (rigid script; no room for spontaneous reactions by the wizard)
 % time-driven script - rigid, imposed by the programming - shows lack of intelligence, autonomy
@@ -100,17 +102,17 @@ Figure~\ref{experimentalarchitecture} illustrates this hierarchy of elements wit
 \begin{figure}[ht]
    \vskip -0.3cm
     \begin{center}
-        \includegraphics[width=0.4\paperwidth]{assets/diagrams/experimentalarchitecture}
+        \includegraphics[width=0.4\paperwidth]{assets/diagrams/userstudy}
         \vskip -0.5cm
         \caption{A sample user study.}
-        \label{experimentalarchitecture}
+        \label{fig:userstudy}
     \end{center}
 \vskip -0.7cm
 \end{figure}
 
 \subsection{System interfaces} 
 
-HRIStudio features a user-friendly graphical interface for desiging WoZ experiments. This interface provides a visual programming system that allows one to build their experiments using a drag-and-drop approach. The core of the experiment creation process offers a library of actions including common tasks and behaviors executed in the experiment such as robot movements, speech synthesis, and instructions for the wizard. One can drag and drop action components onto a canvas and arrange them into sequences that define  study, experiment, steps, and action components. The interface provides configuration options that allow researchers to customize parameters in each element. This configuration system offers contextual help and documentation to guide researchers through the process while providing examples or best practices for designing studies.
+HRIStudio features a user-friendly graphical interface for designing WoZ experiments. This interface provides a visual programming system that allows one to build their experiments using a drag-and-drop approach. The core of the experiment creation process offers a library of actions including common tasks and behaviors executed in the experiment such as robot movements, speech synthesis, and instructions for the wizard. One can drag and drop action components onto a canvas and arrange them into sequences that define  study, experiment, steps, and action components. The interface provides configuration options that allow researchers to customize parameters in each element. This configuration system offers contextual help and documentation to guide researchers through the process while providing examples or best practices for designing studies.
 
 \subsection{Live experiment operation}
 
@@ -136,76 +138,74 @@ For the robot control layer, we utilize ROS as the communication and control int
 
 \subsection{High-level architecture}
 
-We have designed our system as a full-stack web application.  The frontend handles user interface components such as the experiment \emph{Designer} view, the experiment \emph{Execution} view, and the \emph{Playback} view. The backend API logic manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js' server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
+We have designed our system as a full-stack web application.  The frontend handles user interface components such as the experiment \emph{Design} view, the experiment \emph{Execute} view, and the \emph{Playback} view. The backend API logic manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js' server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
 
 \begin{figure}[ht]
    \vskip -0.3cm
     \begin{center}
-        \includegraphics[width=0.4\paperwidth]{assets/diagrams/highlevelarchitecture}
+        \includegraphics[width=0.4\paperwidth]{assets/diagrams/systemarch}
         \vskip -0.3cm
         \caption{The high-level system architecture of HRIStudio}
-        \label{highlevelarchitecture}
+        \label{fig:systemarch}
     \end{center}
      \vskip -0.7cm
 \end{figure}
 
 \subsection{User interface mockups}
 
-{\bf [STOPPED HERE] -- to dos: use the same names given previously to each view of the user interface, that is, Designer, Execution, Playback, etc. Without this note, we basically fit exactly in 4 pages.}
+A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes for the study dashboard, design view, execute view, and the playback view.
 
-A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes for the frontend's dashboard, drag-and-drop experiment designer, the real-time experiment monitoring and control dashboard, and the data playback and annotation tools.
-
-The project dashboard mockups (see Figure \ref{dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
+The study dashboard mockups (see Figure~\ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/projectdashboard}
+        \includegraphics[width=0.4\paperwidth]{assets/mockups/dashboard}
         \vskip -0.3cm
         \caption{A sample project dashboard within HRIStudio}
-        \label{dashboard}
+        \label{fig:dashboard}
     \end{center}
     \vskip -0.4cm
 \end{figure}
 
-The experiment designer mockups depicted in Figure \ref{designer} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
+The design view mockups depicted in Figure~\ref{fig:design} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/experimentdesigner}
+        \includegraphics[width=0.4\paperwidth]{assets/mockups/design}
          \vskip -0.3cm
-        \caption{A sample project's designer view in HRIStudio}
-        \label{designer}
+        \caption{A sample project's design view in HRIStudio}
+        \label{fig:design}
     \end{center}
     \vskip -0.5cm
 \end{figure}
 
-For the live experiment operation, we have designed mockups that provide synchronized views for the wizard and observers. The wizard view (see Figure \ref{wizardview}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
+For the execute view, we have designed mockups that provide synchronized views for the wizard and observers. The primary (wizard) view (see Figure~\ref{fig:execute}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/wizardview}
+        \includegraphics[width=0.4\paperwidth]{assets/mockups/execute}
          \vskip -0.3cm
         \caption{The wizard's view during a live experiment}
-        \label{wizardview}
+        \label{fig:execute}
     \end{center}
     \vskip -0.5cm
 \end{figure}
 
-Our data playback and annotation mockups (showcased in Figure \ref{playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
+Our playback mockups (showcased in Figure~\ref{fig:playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
          \vskip -0.3cm
         \caption{The playback view of an experiment's trial}
-        \label{playback}
+        \label{fig:playback}
     \end{center}
     \vskip -0.7cm
 \end{figure}
 
 \subsection{Development roadmap}
 
-While the UI mockups have laid a solid foundation, we still anticipate several challenges in transforming these designs into a fully functional platform. One of the primary challenges will be integrating the Next web application with the ROS interface, and handling the bi-directional communication between the two systems. We anticipate leveraging tRPC and WebSockets to facilitate real-time data exchange and robot control.
+While the UI mockups have laid a solid foundation, we still anticipate several challenges in transforming these designs into a fully functional platform. One of the primary challenges will be integrating the Next.js web application with the ROS interface, and handling the bi-directional communication between the two systems. We anticipate leveraging tRPC and WebSockets to facilitate real-time data exchange and robot control.
 
 Another significant challenge lies in developing the drag-and-drop experiment designer and encoding the experimental procedures into a standardized, shareable format. We plan to explore existing visual programming libraries and develop custom components to enable intuitive experiment construction and configuration.
 
@@ -215,7 +215,7 @@ Additionally, implementing robust data logging and playback capabilities will re
 
 To address. these challenges, our development roadmap includes:
 \begin{itemize}
-    \item Establishing a stable Next codebase and integrating tRPC for API development.
+    \item Establishing a stable Next.js codebase and integrating tRPC for API development.
     \item Implementing a C++ ROS node for handling robot communication and control.
     \item Developing the drag-and-drop experiment designer using visual programming libraries and custom components.
     \item Integrating data logging mechanisms for capturing experimental data streams.
