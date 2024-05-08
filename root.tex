@@ -111,9 +111,9 @@ HRIStudio features a user-friendly graphical interface for designing WoZ experim
 
 \subsection{Live experiment operation}
 
-During live experiment sessions, HRIStudio offers multiple synchronized views for experiment execution and observation, and data collection. The \emph{Primary} view gives the wizard control over the robot's actions and behaviors. Displaying the current step of the experiment along with associated actions, this interface facilitates intuitive navigation through the structural elements of the experiments and allows for the creation of annotations on a timeline. The wizard can advance through actions sequentially or manually trigger specific actions based on contextual cues or responses from the human subject. During the execution of an experiment, the interface gives the wizard manual controls to insert unscripted robot movements, speech synthesis, and other functions dynamically. These events are recorded in persistent media within the sequence of actions in the experimental script.
+During live experiment sessions, HRIStudio offers multiple synchronized views for experiment execution and observation, and data collection. The wizard's \emph{Execute} view gives the wizard control over the robot's actions and behaviors. Displaying the current step of the experiment along with associated actions, this interface facilitates intuitive navigation through the structural elements of the experiments and allows for the creation of annotations on a timeline. The wizard can advance through actions sequentially or manually trigger specific actions based on contextual cues or responses from the human subject. During the execution of an experiment, the interface gives the wizard manual controls to insert unscripted robot movements, speech synthesis, and other functions dynamically. These events are recorded in persistent media within the sequence of actions in the experimental script.
 
-In parallel, the \emph{Observer} view supports live monitoring, note-taking, and potential interventions by additional researchers involved in the experiment. This feature ensures the option of continuous oversight without disrupting the experience of human subjects or the wizard's control. Collaboration on an experiment is made possible by allowing multiple observers to concurrently access the \emph{Observer} view.
+In parallel, the observer's \emph{Execute} view supports live monitoring, note-taking, and potential interventions by additional researchers involved in the experiment. This feature ensures the option of continuous oversight without disrupting the experience of human subjects or the wizard's control. Collaboration on an experiment is made possible by allowing multiple observers to concurrently access the \emph{Execute} view.
 
 \subsection{Data logging, playback, and annotation}
 
@@ -148,51 +148,51 @@ We have designed our system as a full-stack web application.  The frontend handl
 
 \subsection{User interface mockups}
 
-A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes for the study dashboard, design view, execute view, and the playback view.
+A significant portion of our efforts have been dedicated to designing intuitive and user-friendly interface mockups for the platform's key components. We have created wireframes and prototypes for the study \emph{Dashboard}, \emph{Design} view, \emph{Execute} view, and the \emph{Playback} view.
 
-The study dashboard mockups (see Figure~\ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
+The study \emph{Dashboard} mockups (see Figure~\ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.4\paperwidth]{assets/mockups/dashboard}
         \vskip -0.3cm
-        \caption{A sample project dashboard within HRIStudio}
+        \caption{A sample project's \emph{Dashboard} view within HRIStudio}
         \label{fig:dashboard}
     \end{center}
     \vskip -0.4cm
 \end{figure}
 
-The design view mockups depicted in Figure~\ref{fig:design} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
+The \emph{Design} view mockups depicted in Figure~\ref{fig:design} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.4\paperwidth]{assets/mockups/design}
          \vskip -0.3cm
-        \caption{A sample project's design view in HRIStudio}
+        \caption{A sample project's \emph{Design} view in HRIStudio}
         \label{fig:design}
     \end{center}
     \vskip -0.5cm
 \end{figure}
 
-For the execute view, we have designed mockups that provide synchronized views for the wizard and observers. The primary (wizard) view (see Figure~\ref{fig:execute}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
+For the \emph{Execute} view, we have designed mockups that provide synchronized views for the wizard and observers. The wizard's view (see Figure~\ref{fig:execute}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.4\paperwidth]{assets/mockups/execute}
          \vskip -0.3cm
-        \caption{The wizard's view during a live experiment}
+        \caption{The wizard's \emph{Execute} view during a live experiment}
         \label{fig:execute}
     \end{center}
     \vskip -0.5cm
 \end{figure}
 
-Our playback mockups (showcased in Figure~\ref{fig:playback}) showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
+As shown in~\ref{fig:playback}, our \emph{Playback} mockups showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
-         \vskip -0.3cm
-        \caption{The playback view of an experiment's trial}
+        \vskip -0.3cm
+        \caption{The \emph{Playback} view of an experiment within a study}
         \label{fig:playback}
     \end{center}
     \vskip -0.7cm
@@ -200,33 +200,23 @@ Our playback mockups (showcased in Figure~\ref{fig:playback}) showcase features 
 
 \subsection{Development roadmap}
 
-While the UI mockups have laid a solid foundation, we anticipate challenges in transforming these designs into a fully functional platform, such as integrating the Next.js web application with the ROS interface and handling bi-directional communication between the two. We plan to leverage tRPC and WebSockets for real-time data exchange and robot control.
+While the UI mockups have laid a solid foundation, we anticipate challenges in transforming these designs into a fully functional platform, such as integrating the Next.js web application with the ROS interface and handling bi-directional communication between the two. We plan to leverage tRPC for real-time data exchange and robot control.
 
-Another key challenge is developing the drag-and-drop experiment designer and encoding procedures into a shareable format. We will explore visual programming libraries and develop custom components for intuitive experiment construction.
+Another key challenge is developing the \emph{Design} view's visual programming environment, and encoding procedures into a shareable format. We will explore existing visual programming libraries and develop custom components for intuitive experiment construction.
 
 Implementing robust data logging and synchronized playback of audio, video, and sensor data while ensuring efficient storage and retrieval is also crucial.
 
 To address these challenges, our development roadmap includes:
 \begin{itemize}
-    \item Establishing a stable Next.js codebase with tRPC integration
-    \item Implementing a ROS interface node for robot communication    
-    \item Developing the visual experiment designer
-    \item Integrating data logging for capturing experimental data streams.
-    \item Building playback and annotation tools with export capabilities.
-    \item Creating tutorials and documentation for researcher adoption
+    \item Establishing a stable Next.js codebase with tRPC integration,
+    \item Implementing a ROS interface node for robot communication,
+    \item Developing the visual experiment designer,
+    \item Integrating data logging for capturing experimental data streams,
+    \item Building playback and annotation tools with export capabilities,
+    \item Creating tutorials and documentation for researcher adoption.
 \end{itemize}
 
-By following this roadmap and addressing the identified challenges, we aim to transform the proposed platform into a fully functional and accessible tool for conducting WoZ experiments in HRI research, empowering researchers and fostering collaboration within the community.
-
-%\section*{APPENDIX}
-%
-%% TODO: Complete appendix
-%Appendixes should appear before the acknowledgment.
-%
-%\section*{ACKNOWLEDGMENT}
-%
-%% TODO: Make acknowledgments
-%The preferred spelling of the word acknowledgment in America is without an e after the g. Avoid the stilted expression, One of us (R. B. G.) thanks . . .  Instead, try R. B. G. thanks. Put sponsor acknowledgments in the unnumbered footnote on the first page.
+This roadmap identifies some of the challenges ahead. We expect that this plan will fully realize HRIStudio into a functional and accessible tool for conducting WoZ experiments. We hope for this tool to become a significant aid in HRI research, empowering researchers and fostering collaboration within the community. 
 
 \bibliography{refs}
 \bibliographystyle{plain}
