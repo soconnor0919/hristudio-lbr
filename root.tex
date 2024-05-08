@@ -29,6 +29,7 @@
 %\usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
 \usepackage{url}
+\usepackage{float}
 
 \hyphenation{analysis}
 
@@ -49,7 +50,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, presents challenges due to technical complexities and specialized expertise requirements. To address these challenges, we propose HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments in HRI research. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during live sessions, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers and promoting collaboration, HRIStudio aims to accelerate innovation in human-centered robotics research, empowering researchers to explore novel HRI concepts efficiently and effectively.
+Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, presents challenges due to technical complexities and specialized expertise requirements. To address these challenges, we propose HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments in HRI research. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during experimental runs, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers and promoting collaboration, HRIStudio aims to accelerate innovation in human-centered robotics research, empowering researchers to explore novel HRI concepts efficiently and effectively.
 
 \end{abstract}
 
@@ -64,7 +65,7 @@ Human-robot interaction (HRI) is an essential field of study for understanding h
 
 While WoZ is a powerful paradigm, it does not eliminate all experimental challenges. Researchers may face barriers related to the use of specialized tools and methodologies involved in WoZ user studies and also find difficulties in creating fully reproducible experiments. Existing solutions often rely on low-level robot operating systems, limited proprietary platforms, or require extensive custom coding, which can restrict their use to domain experts with extensive technical backgrounds.
 
-Through a comprehensive review of current literature, we have identified a pressing need for a platform that simplifies the process of designing, executing, analyzing, and recording WoZ-based user studies. To address this gap, we are developing \emph{HRIStudio},  a novel web-based platform that enables the intuitive configuration and operation of WoZ studies for HRI research. Our contribution leverages the \emph{Robot Operating System} (ROS) to handle the complexities of interfacing with different robotics platforms. HRIStudio presents users with a high-level, user-friendly interface for experimental design, live control and monitoring, and comprehensive post-study analysis. The system offers drag-and-drop visual programming for describing experiments without extensive coding, real-time control and observation capabilities during live experiment sessions, as well as comprehensive data logging and playback tools for analysis and enhanced reproducibility. We expect that with these features, HRIStudio will increase the usability of the  WoZ paradigm and increase scientific rigor of HRI experiments. The following sections outline our proposed system design, experimental workflow structure, implementation progress, and future directions for this work.
+Through a comprehensive review of current literature, we have identified a pressing need for a platform that simplifies the process of designing, executing, analyzing, and recording WoZ-based user studies. To address this gap, we are developing \emph{HRIStudio},  a novel web-based platform that enables the intuitive configuration and operation of WoZ studies for HRI research. Our contribution leverages the \emph{Robot Operating System} (ROS) to handle the complexities of interfacing with different robotics platforms. HRIStudio presents users with a high-level, user-friendly interface for experimental design, live control and monitoring during execution runs (which we call \emph{live experiment sessions}), and comprehensive post-study analysis. The system offers drag-and-drop visual programming for describing experiments without extensive coding, real-time control and observation capabilities during live experiment sessions, as well as comprehensive data logging and playback tools for analysis and enhanced reproducibility. We expect that with these features, HRIStudio will make the application of the  WoZ paradigm more systematic thereby increasing the scientific rigor of this type of HRI experiment. The following sections present a brief review of the relevant literature, outline the design of HRIStudio and its experimental workflow, and offer implementation details and future directions for this work.
 
 \section{State-of-the-Art}
 
@@ -136,14 +137,13 @@ For the robot control layer, we utilize ROS as the communication and control int
 We have designed our system as a full-stack web application.  The frontend handles user interface components such as the experiment \emph{Design} view, the experiment \emph{Execute} view, and the \emph{Playback} view. The backend API logic manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js' server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
 
 \begin{figure}[ht]
-   \vskip -0.3cm
-    \begin{center}
+   \vskip -0.4cm
+    \centering
         \includegraphics[width=0.4\paperwidth]{assets/diagrams/systemarch}
-        \vskip -0.3cm
-        \caption{The high-level system architecture of HRIStudio}
+        \vskip -0.8cm
+        \caption{The high-level system architecture of HRIStudio.}
         \label{fig:systemarch}
-    \end{center}
-     \vskip -0.7cm
+     \vskip -.5cm
 \end{figure}
 
 \subsection{User interface mockups}
@@ -152,50 +152,49 @@ A significant portion of our efforts have been dedicated to designing intuitive 
 
 The study \emph{Dashboard} mockups (see Figure~\ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
-\begin{figure}[h]
-    \begin{center}
+\begin{figure}[H]
+	\vskip -.2cm
+    \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/dashboard}
         \vskip -0.3cm
-        \caption{A sample project's \emph{Dashboard} view within HRIStudio}
+        \caption{A sample project's \emph{Dashboard} view within HRIStudio.}
         \label{fig:dashboard}
-    \end{center}
-    \vskip -0.4cm
+    \vskip -.2cm
 \end{figure}
 
 The \emph{Design} view mockups depicted in Figure~\ref{fig:design} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
-\begin{figure}[h]
-    \begin{center}
+\begin{figure}[H]
+\vskip -1cm
+    \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/design}
          \vskip -0.3cm
-        \caption{A sample project's \emph{Design} view in HRIStudio}
+        \caption{A sample project's \emph{Design} view in HRIStudio.}
         \label{fig:design}
-    \end{center}
-    \vskip -0.5cm
+    \vskip -.6cm
 \end{figure}
 
 For the \emph{Execute} view, we have designed mockups that provide synchronized views for the wizard and observers. The wizard's view (see Figure~\ref{fig:execute}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
 
-\begin{figure}[h]
-    \begin{center}
+\begin{figure}[H]
+\vskip -.5cm
+    \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/execute}
          \vskip -0.3cm
-        \caption{The wizard's \emph{Execute} view during a live experiment}
+        \caption{The wizard's \emph{Execute} view during a live experiment.}
         \label{fig:execute}
-    \end{center}
     \vskip -0.5cm
 \end{figure}
 
 As shown in~\ref{fig:playback}, our \emph{Playback} mockups showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
 
-\begin{figure}[h]
-    \begin{center}
+\begin{figure}[H]
+    \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
         \vskip -0.3cm
-        \caption{The \emph{Playback} view of an experiment within a study}
+        \caption{The \emph{Playback} view of an experiment within a study.}
         \label{fig:playback}
-    \end{center}
-    \vskip -0.7cm
+    \vskip -0.2cm
 \end{figure}
 
 \subsection{Development roadmap}
