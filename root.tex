@@ -50,7 +50,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, presents challenges due to technical complexities and specialized expertise requirements. To address these challenges, we propose HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments in HRI research. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during experimental runs, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers and promoting collaboration, HRIStudio aims to accelerate innovation in human-centered robotics research, empowering researchers to explore novel HRI concepts efficiently and effectively.
+Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, can be challenging. WoZ user studies can have complexities in technical and methodological level that may render the results irreproducible. We propose to address these challenges with HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during experimental runs, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers, promoting collaboration, and offering methodological guidelines, HRIStudio aims to make human-centered robotics research easier, and at the same time, empower researchers to develop scientifically rigorous user studies.
 
 \end{abstract}
 
@@ -96,7 +96,7 @@ In order to enforce consistency across multiple runs of the \emph{experiment}, H
 Figure~\ref{fig:userstudy} illustrates this hierarchy of elements with a practical example.  We argue that this hierarchical structure for the experimental procedure in a user study benefits methodological rigor and reproducibility while affording the researcher the ability to design complex HRI studies while guiding the wizard to follow a consistent set of instructions.
 
 \begin{figure}[ht]
-   \vskip -0.3cm
+   \vskip -0.4cm
     \begin{center}
         \includegraphics[width=0.4\paperwidth]{assets/diagrams/userstudy}
         \vskip -0.5cm
@@ -114,11 +114,11 @@ HRIStudio features a user-friendly graphical interface for designing WoZ experim
 
 During live experiment sessions, HRIStudio offers multiple synchronized views for experiment execution and observation, and data collection. The wizard's \emph{Execute} view gives the wizard control over the robot's actions and behaviors. Displaying the current step of the experiment along with associated actions, this interface facilitates intuitive navigation through the structural elements of the experiments and allows for the creation of annotations on a timeline. The wizard can advance through actions sequentially or manually trigger specific actions based on contextual cues or responses from the human subject. During the execution of an experiment, the interface gives the wizard manual controls to insert unscripted robot movements, speech synthesis, and other functions dynamically. These events are recorded in persistent media within the sequence of actions in the experimental script.
 
-In parallel, the observer's \emph{Execute} view supports live monitoring, note-taking, and potential interventions by additional researchers involved in the experiment. This feature ensures the option of continuous oversight without disrupting the experience of human subjects or the wizard's control. Collaboration on an experiment is made possible by allowing multiple observers to concurrently access the \emph{Execute} view.
+The observer's \emph{Execute} view supports live monitoring, note-taking, and potential interventions by additional researchers involved in the experiment. This feature ensures the option of continuous oversight without disrupting the experience of human subjects or the wizard's control. Collaboration on an experiment is made possible by allowing multiple observers to concurrently access the \emph{Execute} view.
 
 \subsection{Data logging, playback, and annotation}
 
-Throughout the live experiment session, the platform automatically logs various data streams, including timestamped records of all executed actions and experimental events, exposed robot sensor data, and audio and video recordings of the participant's interactions with the robot. This logged data is stored in JavaScript Object Notation (JSON)  encrypted files kept in secure storage, enabling efficient post-experiment data analysis without compromise to the privacy of human subjects.
+Throughout the live experiment session, the platform automatically logs various data streams, including timestamped records of all executed actions and experimental events, exposed robot sensor data, and audio and video recordings of the participant's interactions with the robot. Logged data is stored in JavaScript Object Notation (JSON)  encrypted files in secure storage, enabling efficient post-experiment data analysis to ensure the privacy of human subjects.
 
 After a live experiment session, researchers may use a \emph{Playback} view to inspect the recorded data streams and develop a holistic understanding of the experiment's progression. This interface supports features such as playback of recorded data such as audio, video, and sensor data streams, scrubbing of recorded data with the ability to mark and note significant events or observations, and export options for selected data segments or annotations.
 
@@ -131,19 +131,19 @@ The realization of the proposed platform is a work in progress. So far, we have 
 We are leveraging the \emph{Next.js React} \cite{next} framework for building our framework as a web application. Next.js provides server-side rendering, improved performance, and enhanced security. By making HRIStudio a web application, we achieve independence from hardware and operating system. We are building into the framework support for API routes and integration with \emph{TypeScript Remote Procedure Call} (tRPC), which simplifies the development of APIs for interfacing with the ROS interface.
 
 For the robot control layer, we utilize ROS as the communication and control interface. ROS offers a modular and extensible architecture, enabling seamless integration with a multitude of consumer and research robotics platforms. Thanks to the widespread adoption of ROS in the robotics community, HRIStudio will be able to support a wide range robots out-of-the-box by leveraging the  efforts of the ROS community for new robot platforms.
-
+\vspace{-0.3cm}
 \subsection{High-level architecture}
 
-We have designed our system as a full-stack web application.  The frontend handles user interface components such as the experiment \emph{Design} view, the experiment \emph{Execute} view, and the \emph{Playback} view. The backend API logic manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js' server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS.
+We have designed our system as a full-stack web application. The frontend handles user interface components such as the experiment \emph{Design} view, the experiment \emph{Execute} view, and the \emph{Playback} view. The backend API logic manages experiment data, user authentication, and communication with a ROS interface component. In its turn, the ROS interface is implemented as a separate C++ node and translates high-level actions from the web application into low-level robot commands, sensor data, and protocols, abstracting the complexities of different robotics platforms. This modular architecture leverages the benefits of Next.js' server-side rendering, improved performance, and security, while enabling integration with various robotic platforms through ROS. Fig.~\ref{fig:systemarch} shows the structure of the application.
 
-\begin{figure}[ht]
-   \vskip -0.4cm
-    \centering
-        \includegraphics[width=0.4\paperwidth]{assets/diagrams/systemarch}
-        \vskip -0.8cm
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.35\paperwidth]{assets/diagrams/systemarch}
+        \vskip -0.5cm
         \caption{The high-level system architecture of HRIStudio.}
         \label{fig:systemarch}
-     \vskip -.5cm
+     \vskip -0.8cm
+     \end{center}
 \end{figure}
 
 \subsection{User interface mockups}
@@ -152,7 +152,7 @@ A significant portion of our efforts have been dedicated to designing intuitive 
 
 The study \emph{Dashboard} mockups (see Figure~\ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
-\begin{figure}[H]
+\begin{figure}
 	\vskip -.2cm
     \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/dashboard}
@@ -164,37 +164,37 @@ The study \emph{Dashboard} mockups (see Figure~\ref{fig:dashboard}) display an i
 
 The \emph{Design} view mockups depicted in Figure~\ref{fig:design} feature a visual programming canvas where researchers can construct their experiments by dragging and dropping pre-defined action components. These components represent common tasks and behaviors, such as robot movements, speech synthesis, and instructions for the wizard. The mockups also include configuration panels for customizing the parameters of each action component.
 
-\begin{figure}[H]
-\vskip -1cm
+\begin{figure}
+\vskip -0.1cm
     \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/design}
          \vskip -0.3cm
         \caption{A sample project's \emph{Design} view in HRIStudio.}
         \label{fig:design}
-    \vskip -.6cm
+    \vskip -.3cm
 \end{figure}
 
 For the \emph{Execute} view, we have designed mockups that provide synchronized views for the wizard and observers. The wizard's view (see Figure~\ref{fig:execute}) presents an intuitive step-based interface that walks the wizard through the experiment as specified by the designer, triggering actions, and controlling the robot, while the observer view facilitates real-time monitoring and note taking.
 
-\begin{figure}[H]
-\vskip -.5cm
+\begin{figure}
+\vskip -0.3cm
     \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/execute}
          \vskip -0.3cm
         \caption{The wizard's \emph{Execute} view during a live experiment.}
         \label{fig:execute}
-    \vskip -0.5cm
+    \vskip -0.9cm
 \end{figure}
 
-As shown in~\ref{fig:playback}, our \emph{Playback} mockups showcase features for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. These mockups incorporate visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
+Fig.~\ref{fig:playback} shows \emph{Playback} mockups for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. The features include visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
         \includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
         \vskip -0.3cm
         \caption{The \emph{Playback} view of an experiment within a study.}
         \label{fig:playback}
-    \vskip -0.2cm
+    \vskip -0.4cm
 \end{figure}
 
 \subsection{Development roadmap}
