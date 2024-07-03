@@ -50,7 +50,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, can be challenging. WoZ user studies can have complexities in technical and methodological level that may render the results irreproducible. We propose to address these challenges with HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during experimental runs, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers, promoting collaboration, and offering methodological guidelines, HRIStudio aims to make human-centered robotics research easier, and at the same time, empower researchers to develop scientifically rigorous user studies.
+Human-robot interaction (HRI) research plays a pivotal role in shaping how robots communicate and collaborate with humans. However, conducting HRI studies, particularly those employing the Wizard-of-Oz (WoZ) technique, can be challenging. WoZ user studies can have complexities at the technical and methodological levels that may render the results irreproducible. We propose to address these challenges with HRIStudio, a novel web-based platform designed to streamline the design, execution, and analysis of WoZ experiments. HRIStudio offers an intuitive interface for experiment creation, real-time control and monitoring during experimental runs, and comprehensive data logging and playback tools for analysis and reproducibility. By lowering technical barriers, promoting collaboration, and offering methodological guidelines, HRIStudio aims to make human-centered robotics research easier, and at the same time, empower researchers to develop scientifically rigorous user studies.
 
 \end{abstract}
 
@@ -77,7 +77,7 @@ In addition to the aforementioned frameworks, we considered Riek's systematic an
 
 \section{Overarching Design Goals}
 
-We have identified several guiding design principles to maximize HRIStudio's effectiveness, usefulness, and usability. Foremost, we want HRIStudio to be accessible to users with and without deep robot programming expertise so that we may lower the barrier to entry for those staging HRI studies. The platform should provide an intuitive graphical user interface that obviates the need for describing robot behaviors in a programming language. The user should be able to focus on describing sequences of robot behaviors without getting bogged down by all the details of specific robots. To this end, we determined that the framework should offer users the means by which to describe experiments and robot behaviors, while capturing and storing all data generated including text-based logs, audio, video, IRB materials, and user consent forms. 
+We have identified several guiding design principles to maximize HRIStudio's effectiveness, usefulness, and usability. Foremost, we want HRIStudio to be accessible to users with and without deep robot programming expertise so that we may lower the barrier to entry for those conducting HRI studies. The platform should provide an intuitive graphical user interface that obviates the need for describing robot behaviors in a programming language. The user should be able to focus on describing sequences of robot behaviors without getting bogged down by all the details of specific robots. To this end, we determined that the framework should offer users the means by which to describe experiments and robot behaviors, while capturing and storing all data generated including text-based logs, audio, video, IRB materials, and user consent forms. 
 
 Furthermore, we determined that the framework should also support multiple user accounts and data sharing to enable collaborations between the members of a team and the dissemination of experiments across different teams. By incorporating these design goals, HRIStudio prioritizes experiment design, collaborative workflows, methodological rigor, and scientific reproducibility.
 
@@ -87,7 +87,7 @@ Furthermore, we determined that the framework should also support multiple user 
 
 With HRIStudio, we define a hierarchical organization of elements to express WoZ user studies for HRI research. An experimenter starts by creating and configuring a \emph{study} element, which will comprise multiple instantiations of one same experimental script encapsulated in an element called \emph{experiment}, which captures the experiences of a specific human subject with the robot designated in the script. 
 
-Each \emph{experiment} comprises a sequence of one or more \emph{step} elements. Each \emph{step} models a phase of the experiment and aggregates a sequence of \emph{action} elements, which are fine-grained, specific tasks to be executed either by the wizard or by the robot. An \emph{action} targeted to the wizard provides guidance and maximizes the chances of consistent behavior. An \emph{action} targeted at the robot causes it to execute movements or verbal interactions, or causes it to wait for a human subject's input or response.
+Each \emph{experiment} comprises a sequence of one or more \emph{step} elements. Each \emph{step} models a phase of the experiment and aggregates a sequence of \emph{action} elements, which are fine-grained, specific tasks to be executed either by the wizard or by the robot. An \emph{action} targeted at the wizard provides guidance and maximizes the chances of consistent behavior. An \emph{action} targeted at the robot causes it to execute movements or verbal interactions, or causes it to wait for a human subject's input or response.
 
 The system executes the \emph{actions} in an experimental script asynchronously and in an event-driven manner, guiding the wizard's behavior and allowing them to simulate the robot's autonomous intelligence by responding to the human subject in real time based on the human's actions and reactions. This event-driven approach allows for flexible and spontaneous reactions by the wizard, enabling a more natural and intelligent interaction with the human subject. In contrast, a time-driven script with rigid, imposed timing would show a lack of intelligence and autonomy on the part of the robot.
 
@@ -153,9 +153,9 @@ A significant portion of our efforts have been dedicated to designing intuitive 
 The study \emph{Dashboard} mockups (see Figure~\ref{fig:dashboard}) display an intuitive overview of a project's status, including platform information, collaborators, completed and upcoming trials, subjects, and a list of pending issues. This will allow a researcher to quickly see what needs to be done, or easily navigate to a previous trial's data for analysis.
 
 \begin{figure}
-	\vskip -.2cm
+%	\vskip -.2cm
     \centering
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/dashboard}
+        \includegraphics[width=0.35\paperwidth]{assets/mockups/dashboard}
         \vskip -0.3cm
         \caption{A sample project's \emph{Dashboard} view within HRIStudio.}
         \label{fig:dashboard}
@@ -167,7 +167,7 @@ The \emph{Design} view mockups depicted in Figure~\ref{fig:design} feature a vis
 \begin{figure}
 \vskip -0.1cm
     \centering
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/design}
+        \includegraphics[width=0.35\paperwidth]{assets/mockups/design}
          \vskip -0.3cm
         \caption{A sample project's \emph{Design} view in HRIStudio.}
         \label{fig:design}
@@ -179,18 +179,18 @@ For the \emph{Execute} view, we have designed mockups that provide synchronized 
 \begin{figure}
 \vskip -0.3cm
     \centering
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/execute}
+        \includegraphics[width=0.35\paperwidth]{assets/mockups/execute}
          \vskip -0.3cm
         \caption{The wizard's \emph{Execute} view during a live experiment.}
         \label{fig:execute}
-    \vskip -0.9cm
+%    \vskip -0.9cm
 \end{figure}
 
 Fig.~\ref{fig:playback} shows \emph{Playback} mockups for synchronized playback of recorded data streams, including audio, video, and applicable sensor data. The features include visual and textual annotations, scrubbing capabilities, and data export options to support comprehensive post-experiment analysis and reproducibility.
 
 \begin{figure}
     \centering
-        \includegraphics[width=0.4\paperwidth]{assets/mockups/playback}
+        \includegraphics[width=0.35\paperwidth]{assets/mockups/playback}
         \vskip -0.3cm
         \caption{The \emph{Playback} view of an experiment within a study.}
         \label{fig:playback}
